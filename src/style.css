@@ -1,0 +1,70 @@
+html,
+body {
+  height: 100%;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background: peachpuff;
+  margin: 0;
+  padding: 16px;
+}
+
+#app {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  gap: 16px;
+}
+
+.row {
+  position: relative;
+  display: flex;
+  flex: 1;
+  flex-direction: row;
+  gap: 16px;
+}
+
+.item {
+  position: relative;
+  display: flex;
+  height: 100%;
+  width: 100%;
+  box-shadow: 0 0 1px 0 rgba(0, 0, 0, 1);
+}
+
+.controlls {
+  background-color: antiquewhite;
+  display: flex;
+  height: 64px;
+  gap: 16px;
+}
+
+.controlls input {
+  width: 100%;
+}
+
+canvas {
+  display: block;
+  /*
+  Setting size 100% for canvas adds addtional space
+  - https://stackoverflow.com/questions/63639724/canvas-grows-in-size-when-fitting-to-flex-container-size
+  */
+  width: 0;
+  height: 0;
+}
+
+.label {
+  position: absolute;
+  top: 0;
+  right: 0;
+  font-family: Consolas, monaco, monospace;
+  font-size: 10px;
+  background-color: #000;
+  color: #fff;
+  padding: 2px 4px;
+}

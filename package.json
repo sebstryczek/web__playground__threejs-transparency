@@ -1,0 +1,22 @@
+{
+  "name": "web__playground__threejs-transparency",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview"
+  },
+  "devDependencies": {
+    "typescript": "^5.2.2",
+    "vite": "^5.3.1"
+  },
+  "dependencies": {
+    "@types/three": "^0.154.0",
+    "postprocessing": "^6.35.6",
+    "stats.js": "^0.17.0",
+    "three": "^0.154.0",
+    "three-wboit": "^1.0.15"
+  }
+}
