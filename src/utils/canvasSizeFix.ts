@@ -18,3 +18,5 @@ const canvasSizeFix = (canvas: HTMLCanvasElement) => {
     canvas.style.width = width + 'px';
     canvas.style.height = height + 'px';
 }
+
+export { canvasSizeFix };

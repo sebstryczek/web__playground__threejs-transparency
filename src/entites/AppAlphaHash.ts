@@ -3,14 +3,10 @@ import { App } from '../base/App';
 import { MainScene } from './scenes/MainScene';
 import { MapControls } from 'three/examples/jsm/controls/MapControls.js';
 import { GUI } from 'three/examples/jsm/libs/lil-gui.module.min.js';
-import { EffectComposer } from 'three/examples/jsm/postprocessing/EffectComposer.js';
 import { SSAARenderPass } from 'three/examples/jsm/postprocessing/SSAARenderPass.js';
 import { OutputPass } from 'three/examples/jsm/postprocessing/OutputPass.js';
 import { RenderPass } from 'three/examples/jsm/postprocessing/RenderPass.js';
 import { TAARenderPass } from 'three/examples/jsm/postprocessing/TAARenderPass.js';
-
-
-// import { EffectComposer, SSAARenderPass } from 'three/examples/jsm/Addons.js';
 
 class AppAlphaHash extends App<MainScene> {
   private state: {

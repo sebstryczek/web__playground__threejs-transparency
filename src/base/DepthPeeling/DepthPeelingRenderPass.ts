@@ -110,7 +110,6 @@ if( prevDepth >= gl_FragCoord.z )
   }
 
   render(renderer: THREE.WebGLRenderer) {
-
     const originalRenderTarget = renderer.getRenderTarget();
     const originalAutoClear = renderer.autoClear;
     renderer.autoClear = false;
@@ -144,65 +143,6 @@ if( prevDepth >= gl_FragCoord.z )
     resizeDepth(width, height, this.pixelRatio, DEPTH);
     resizeLayers(width, height, this.pixelRatio);
   }
-
-
-  private isDeepPeelingNeedsUpdate = true;
-
-  public setupDeepPeeling(renderer: THREE.WebGLRenderer) {
-    const { x: width, y: height } = renderer.getSize(new THREE.Vector2());
-    this.setSize(width, height);
-    // resizeLayers(width, height, renderer.getPixelRatio());
-    // resizeDepth(width, height, renderer.getPixelRatio(), AppState.Depth);
-
-
-    // this.scene.traverse((object3D) => {
-    //   console.log("setup")
-    //   return;
-    //   if (object3D instanceof THREE.Mesh === false) {
-    //     return;
-    //   }
-
-    //   if (object3D.material instanceof THREE.Material === false) {
-    //     return;
-    //   }
-
-    //   if (object3D.userData.useDeepPeeling !== true) {
-    //     return;
-    //   }
-
-    //   const clonedMaterial = object3D.material.clone();
-    //   clonedMaterial.blending = THREE.NoBlending;
-    //   clonedMaterial.onBeforeCompile = (shader) => {
-    //     shader.uniforms.uReciprocalScreenSize = globalUniforms.uReciprocalScreenSize;
-    //     shader.uniforms.uPrevDepthTexture = globalUniforms.uPrevDepthTexture;
-    //     shader.fragmentShader = `
-    // // --- DEPTH PEELING SHADER CHUNK (START) (uniform definition)
-    // uniform vec2 uReciprocalScreenSize;
-    // uniform sampler2D uPrevDepthTexture;
-    // // --- DEPTH PEELING SHADER CHUNK (END)
-    // 					${shader.fragmentShader}
-    // 				`;
-    //     //peel depth
-    //     shader.fragmentShader = shader.fragmentShader.replace(
-    //       /}$/gm,
-    //       `
-    // // --- DEPTH PEELING SHADER CHUNK (START) (peeling)
-    //   vec2 screenPos = gl_FragCoord.xy * uReciprocalScreenSize;
-    //   float prevDepth = texture2D(uPrevDepthTexture,screenPos).x;
-    //   if( prevDepth >= gl_FragCoord.z )
-    //       discard;
-    // // --- DEPTH PEELING SHADER CHUNK (END)
-    // }
-    // 					`
-    //     );
-    //   };
-
-    //   object3D.material = clonedMaterial;
-    //   object3D.material.needsUpdate = true;
-    // });
-
-    this.isDeepPeelingNeedsUpdate = false;
-  };
 }
 
 export { DepthPeelingRenderPass };
