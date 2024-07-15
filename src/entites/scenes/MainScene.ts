@@ -57,7 +57,7 @@ class MainScene extends THREE.Scene {
       color: 0xffffff
     });
 
-    const mapTexture = new THREE.TextureLoader().load('/map.jpg', (texture) => {
+    const mapTexture = new THREE.TextureLoader().load('map.jpg', (texture) => {
       const ratio = texture.image.width / texture.image.height;
       mapPlane.scale.set(ratio, 1, 1);
     });
