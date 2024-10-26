@@ -12,6 +12,11 @@ class MainScene extends THREE.Scene {
     return this.#object2;
   }
 
+  #mapPlane: THREE.Mesh;
+  public get mapPlane() {
+    return this.#mapPlane;
+  }
+
   constructor() {
     super();
 
@@ -51,7 +56,7 @@ class MainScene extends THREE.Scene {
     object2.material.opacity = 0.5;
     this.add(object2);
 
-    const mapPlane = createPlane({
+    this.#mapPlane = createPlane({
       position: [0, -5, 0],
       size: [100, 100],
       color: 0xffffff
@@ -59,11 +64,11 @@ class MainScene extends THREE.Scene {
 
     const mapTexture = new THREE.TextureLoader().load('map.jpg', (texture) => {
       const ratio = texture.image.width / texture.image.height;
-      mapPlane.scale.set(ratio, 1, 1);
+      this.mapPlane.scale.set(ratio, 1, 1);
     });
 
-    mapPlane.material.map = mapTexture;
-    this.add(mapPlane);
+    this.mapPlane.material.map = mapTexture;
+    this.add(this.mapPlane);
 
 
     return {

@@ -1,7 +1,7 @@
 // @ts-ignore Package `three-wboit` has no exported types
 import { MeshWboitMaterial } from 'three-wboit';
 // @ts-ignore Package `three-wboit` has no exported types
-import { WboitPass } from 'three-wboit';
+import { WboitPass, WboitUtils } from 'three-wboit';
 
 
 import * as THREE from 'three';
@@ -42,7 +42,6 @@ class AppWBOIT extends App<MainScene> {
     this.scene.object1.material.dispose();
     this.scene.object1.material = material1;
 
-
     const material2 = wboitMaterial.clone();
     material2.weight = 1;
     material2.side = THREE.DoubleSide;
@@ -50,15 +49,29 @@ class AppWBOIT extends App<MainScene> {
     this.scene.object2.material.dispose();
     this.scene.object2.material = material2;
 
-    const wboitPass = new WboitPass(this.renderer, this.scene, this.camera);
+
+    const material3 = wboitMaterial.clone();
+    material3.weight = 1;
+    material3.side = THREE.DoubleSide;
+    material3.map = this.scene.mapPlane.material.map;
+    material3.opacity = 0.5;
+    this.scene.mapPlane.material.dispose();
+    this.scene.mapPlane.material = material3;
+    this.scene.mapPlane.position.setY(10)
+    // WboitUtils.patch(this.scene.mapPlane.material)
+    // this.scene.mapPlane.material.opacity = 0.2
+
+    const wboitPass = new WboitPass(this.renderer, this.scene, this.camera, 0xffffff, 1);
     this.wboitPass = wboitPass;
     this.wboitPass.setSize(this.canvas.width, this.canvas.height);
+
+    // this.scene.background = new THREE.Color("white");
   }
 
   public createRenderPipeline(): void {
     const wboitPass = new WboitPass(this.renderer, this.scene, this.camera);
     wboitPass.setSize(this.canvas.width, this.canvas.height);
-    wboitPass.clearColor = new THREE.Color("black");
+    wboitPass.clearColor = new THREE.Color("white");
     this.effectComposer.addPass(wboitPass);
 
     const copyPass = new ShaderPass(CopyShader);

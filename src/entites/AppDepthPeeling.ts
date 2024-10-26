@@ -13,6 +13,9 @@ class AppDepthPeeling extends App<MainScene> {
 
     DepthPeelingRenderPass.patch(this.scene.object1);
     DepthPeelingRenderPass.patch(this.scene.object2);
+    DepthPeelingRenderPass.patch(this.scene.mapPlane);
+
+    this.scene.mapPlane.material.opacity = 0.5
 
     this.scene.background = new THREE.Color("white");
   }

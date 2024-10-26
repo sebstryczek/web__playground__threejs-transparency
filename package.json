@@ -16,7 +16,7 @@
     "@types/three": "^0.154.0",
     "postprocessing": "^6.35.6",
     "stats.js": "^0.17.0",
-    "three": "^0.154.0",
+    "three": "^0.160.1",
     "three-wboit": "^1.0.15"
   }
 }
